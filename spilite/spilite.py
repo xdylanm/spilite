@@ -7,7 +7,7 @@ class ActiveHighPin(gpiozero.OutputDevice):
 
 class ActiveLowPin(gpiozero.OutputDevice):
     def __init__(self, pin):
-        super(ActiveLowPin, self).__init__(pin, active_high=True, initial_value=False)
+        super(ActiveLowPin, self).__init__(pin, active_high=False, initial_value=False)
 
 class AddressDecoder:
     """An addressable decoder (i.e. 74HC138). Adress lines are active high.
@@ -23,7 +23,7 @@ class AddressDecoder:
             raise ValueError("The address {} is out of range of the available address pins {}".format(my_addr, len(self.addr_pins)))
         for p in self.addr_pins:
             p.value = 1 if 0x01 & tmp_addr else 0
-            tmp_addr = int(tmp_addr / 2)
+            tmp_addr >>= 1
         if self.enable_pin is not None:
             self.enable_pin.on()
 
