@@ -1,4 +1,4 @@
-from decoders import ActiveHighPin
+from pins import ActiveHighPin
 
 class AddressDecoder:
     """An addressable decoder (i.e. 74HC138). Adress lines are active high.

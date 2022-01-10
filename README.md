@@ -1,16 +1,6 @@
 # spilite
 A lite wrapper for spidev. 
 
-## Installation
-
-For a local installation, execute
-
-```bash
-pip install -e .
-```
-
-from the top level folder.
-
 ## Overview
 
 Spilite is a wrapper for [spidev](https://pypi.org/project/spidev/). It adds
@@ -27,17 +17,15 @@ For pin behaviour, [gpiozero](https://pypi.org/project/gpiozero/) types are used
 ```python
 from spidev import SpiDev
 from spilite import SpiLite, ChipSelectPin
-
 # setup chip select pin
 cs_pin = ChipSelectPin(21)
 cs_pin.unselect()
 # setup the SPI bus device (speed and cpol)
 spi = SpiLite(SpiDev(), cs=cs_pin, max_speed_hz=1000000, mode=0b11)
-
 # ...
 # send/receive two bytes
 buffer = [0xff, 0xab]
 with spi as bus:
-	bus.xfer2(buffer)
+  bus.xfer2(buffer)
 ```
 
