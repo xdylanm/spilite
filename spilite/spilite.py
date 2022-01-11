@@ -1,6 +1,6 @@
 import spidev
 
-class SpiLite:
+class Port:
     def __init__(
         self, 
         spi_device,
