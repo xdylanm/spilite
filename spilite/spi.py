@@ -3,16 +3,16 @@ import spidev
 class Port:
     def __init__(
         self, 
-        spi_device,
-        bus_id=0,
-        dev_id=0,
+        max_speed_hz=100000,
+        mode=0b00,
         cs=None, 
         bits_per_word=8,
         lsbfirst=False,
-        max_speed_hz=100000,
-        mode=0b00):
+        bus_id=0,
+        dev_id=0,
+        spi_device=None)
         
-        self._device = spi_device
+        self._device = spi_device if spi_device is not None else spidev.SpiDev()
         self._bus_id = bus_id
         self._dev_id = dev_id
         self.bits_per_word = bits_per_word
