@@ -10,7 +10,7 @@ class Port:
         lsbfirst=False,
         bus_id=0,
         dev_id=0,
-        spi_device=None)
+        spi_device=None):
         
         self._device = spi_device if spi_device is not None else spidev.SpiDev()
         self._bus_id = bus_id
